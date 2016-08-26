@@ -48,8 +48,8 @@ public class ClawerService {
 
 
     public void all() throws IOException, ParseException {
-        for(int i=0;i<36;i++){
-            i=36;
+        for(int i=0;i<37;i++){
+
             String json=getJsonData(i);
             insertData(json);
         }
