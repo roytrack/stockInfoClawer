@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roytrack.mapper.QuotationMapper" >
+  <resultMap id="BaseResultMap" type="com.roytrack.model.Quotation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="trans_date" property="transDate" jdbcType="TIMESTAMP" />
+    <result column="symbol" property="symbol" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="trade" property="trade" jdbcType="DECIMAL" />
+    <result column="pricechange" property="pricechange" jdbcType="DECIMAL" />
+    <result column="changepercent" property="changepercent" jdbcType="DECIMAL" />
+    <result column="buy" property="buy" jdbcType="DECIMAL" />
+    <result column="sell" property="sell" jdbcType="DECIMAL" />
+    <result column="settlement" property="settlement" jdbcType="DECIMAL" />
+    <result column="open" property="open" jdbcType="DECIMAL" />
+    <result column="high" property="high" jdbcType="DECIMAL" />
+    <result column="low" property="low" jdbcType="DECIMAL" />
+    <result column="volume" property="volume" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="ticktime" property="ticktime" jdbcType="TIMESTAMP" />
+    <result column="per" property="per" jdbcType="DECIMAL" />
+    <result column="per_d" property="perD" jdbcType="DECIMAL" />
+    <result column="nta" property="nta" jdbcType="DECIMAL" />
+    <result column="pb" property="pb" jdbcType="DECIMAL" />
+    <result column="mktcap" property="mktcap" jdbcType="DECIMAL" />
+    <result column="nmc" property="nmc" jdbcType="DECIMAL" />
+    <result column="turnoverratio" property="turnoverratio" jdbcType="DECIMAL" />
+    <result column="favor" property="favor" jdbcType="VARCHAR" />
+    <result column="guba" property="guba" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, trans_date, symbol, code, name, trade, pricechange, changepercent, buy, sell, 
+    settlement, open, high, low, volume, amount, ticktime, per, per_d, nta, pb, mktcap, 
+    nmc, turnoverratio, favor, guba
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from quotation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from quotation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.roytrack.model.Quotation" >
+    insert into quotation (id, trans_date, symbol, 
+      code, name, trade, 
+      pricechange, changepercent, buy, 
+      sell, settlement, open, 
+      high, low, volume, 
+      amount, ticktime, per, 
+      per_d, nta, pb, mktcap, 
+      nmc, turnoverratio, favor, 
+      guba)
+    values (#{id,jdbcType=BIGINT}, #{transDate,jdbcType=TIMESTAMP}, #{symbol,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{trade,jdbcType=DECIMAL}, 
+      #{pricechange,jdbcType=DECIMAL}, #{changepercent,jdbcType=DECIMAL}, #{buy,jdbcType=DECIMAL}, 
+      #{sell,jdbcType=DECIMAL}, #{settlement,jdbcType=DECIMAL}, #{open,jdbcType=DECIMAL}, 
+      #{high,jdbcType=DECIMAL}, #{low,jdbcType=DECIMAL}, #{volume,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR}, #{ticktime,jdbcType=TIMESTAMP}, #{per,jdbcType=DECIMAL}, 
+      #{perD,jdbcType=DECIMAL}, #{nta,jdbcType=DECIMAL}, #{pb,jdbcType=DECIMAL}, #{mktcap,jdbcType=DECIMAL}, 
+      #{nmc,jdbcType=DECIMAL}, #{turnoverratio,jdbcType=DECIMAL}, #{favor,jdbcType=VARCHAR}, 
+      #{guba,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.roytrack.model.Quotation" >
+    insert into quotation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="transDate != null" >
+        trans_date,
+      </if>
+      <if test="symbol != null" >
+        symbol,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="pricechange != null" >
+        pricechange,
+      </if>
+      <if test="changepercent != null" >
+        changepercent,
+      </if>
+      <if test="buy != null" >
+        buy,
+      </if>
+      <if test="sell != null" >
+        sell,
+      </if>
+      <if test="settlement != null" >
+        settlement,
+      </if>
+      <if test="open != null" >
+        open,
+      </if>
+      <if test="high != null" >
+        high,
+      </if>
+      <if test="low != null" >
+        low,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="ticktime != null" >
+        ticktime,
+      </if>
+      <if test="per != null" >
+        per,
+      </if>
+      <if test="perD != null" >
+        per_d,
+      </if>
+      <if test="nta != null" >
+        nta,
+      </if>
+      <if test="pb != null" >
+        pb,
+      </if>
+      <if test="mktcap != null" >
+        mktcap,
+      </if>
+      <if test="nmc != null" >
+        nmc,
+      </if>
+      <if test="turnoverratio != null" >
+        turnoverratio,
+      </if>
+      <if test="favor != null" >
+        favor,
+      </if>
+      <if test="guba != null" >
+        guba,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="transDate != null" >
+        #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="symbol != null" >
+        #{symbol,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=DECIMAL},
+      </if>
+      <if test="pricechange != null" >
+        #{pricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="changepercent != null" >
+        #{changepercent,jdbcType=DECIMAL},
+      </if>
+      <if test="buy != null" >
+        #{buy,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null" >
+        #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="settlement != null" >
+        #{settlement,jdbcType=DECIMAL},
+      </if>
+      <if test="open != null" >
+        #{open,jdbcType=DECIMAL},
+      </if>
+      <if test="high != null" >
+        #{high,jdbcType=DECIMAL},
+      </if>
+      <if test="low != null" >
+        #{low,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="ticktime != null" >
+        #{ticktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="per != null" >
+        #{per,jdbcType=DECIMAL},
+      </if>
+      <if test="perD != null" >
+        #{perD,jdbcType=DECIMAL},
+      </if>
+      <if test="nta != null" >
+        #{nta,jdbcType=DECIMAL},
+      </if>
+      <if test="pb != null" >
+        #{pb,jdbcType=DECIMAL},
+      </if>
+      <if test="mktcap != null" >
+        #{mktcap,jdbcType=DECIMAL},
+      </if>
+      <if test="nmc != null" >
+        #{nmc,jdbcType=DECIMAL},
+      </if>
+      <if test="turnoverratio != null" >
+        #{turnoverratio,jdbcType=DECIMAL},
+      </if>
+      <if test="favor != null" >
+        #{favor,jdbcType=VARCHAR},
+      </if>
+      <if test="guba != null" >
+        #{guba,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.roytrack.model.Quotation" >
+    update quotation
+    <set >
+      <if test="transDate != null" >
+        trans_date = #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="symbol != null" >
+        symbol = #{symbol,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade,jdbcType=DECIMAL},
+      </if>
+      <if test="pricechange != null" >
+        pricechange = #{pricechange,jdbcType=DECIMAL},
+      </if>
+      <if test="changepercent != null" >
+        changepercent = #{changepercent,jdbcType=DECIMAL},
+      </if>
+      <if test="buy != null" >
+        buy = #{buy,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null" >
+        sell = #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="settlement != null" >
+        settlement = #{settlement,jdbcType=DECIMAL},
+      </if>
+      <if test="open != null" >
+        open = #{open,jdbcType=DECIMAL},
+      </if>
+      <if test="high != null" >
+        high = #{high,jdbcType=DECIMAL},
+      </if>
+      <if test="low != null" >
+        low = #{low,jdbcType=DECIMAL},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="ticktime != null" >
+        ticktime = #{ticktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="per != null" >
+        per = #{per,jdbcType=DECIMAL},
+      </if>
+      <if test="perD != null" >
+        per_d = #{perD,jdbcType=DECIMAL},
+      </if>
+      <if test="nta != null" >
+        nta = #{nta,jdbcType=DECIMAL},
+      </if>
+      <if test="pb != null" >
+        pb = #{pb,jdbcType=DECIMAL},
+      </if>
+      <if test="mktcap != null" >
+        mktcap = #{mktcap,jdbcType=DECIMAL},
+      </if>
+      <if test="nmc != null" >
+        nmc = #{nmc,jdbcType=DECIMAL},
+      </if>
+      <if test="turnoverratio != null" >
+        turnoverratio = #{turnoverratio,jdbcType=DECIMAL},
+      </if>
+      <if test="favor != null" >
+        favor = #{favor,jdbcType=VARCHAR},
+      </if>
+      <if test="guba != null" >
+        guba = #{guba,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.roytrack.model.Quotation" >
+    update quotation
+    set trans_date = #{transDate,jdbcType=TIMESTAMP},
+      symbol = #{symbol,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      trade = #{trade,jdbcType=DECIMAL},
+      pricechange = #{pricechange,jdbcType=DECIMAL},
+      changepercent = #{changepercent,jdbcType=DECIMAL},
+      buy = #{buy,jdbcType=DECIMAL},
+      sell = #{sell,jdbcType=DECIMAL},
+      settlement = #{settlement,jdbcType=DECIMAL},
+      open = #{open,jdbcType=DECIMAL},
+      high = #{high,jdbcType=DECIMAL},
+      low = #{low,jdbcType=DECIMAL},
+      volume = #{volume,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      ticktime = #{ticktime,jdbcType=TIMESTAMP},
+      per = #{per,jdbcType=DECIMAL},
+      per_d = #{perD,jdbcType=DECIMAL},
+      nta = #{nta,jdbcType=DECIMAL},
+      pb = #{pb,jdbcType=DECIMAL},
+      mktcap = #{mktcap,jdbcType=DECIMAL},
+      nmc = #{nmc,jdbcType=DECIMAL},
+      turnoverratio = #{turnoverratio,jdbcType=DECIMAL},
+      favor = #{favor,jdbcType=VARCHAR},
+      guba = #{guba,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

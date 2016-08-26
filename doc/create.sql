@@ -1,0 +1,33 @@
+drop table if EXISTS quotation;
+
+CREATE TABLE `quotation` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `trans_date` datetime NOT NULL,
+  `symbol` varchar(20)  NOT NULL,
+  `code` varchar(20)  NOT NULL,
+  `name` varchar(50)  NOT NULL,
+  `trade` decimal(16,2) NOT NULL,
+  `pricechange` decimal(16,2) DEFAULT NULL,
+  `changepercent` decimal(16,2) DEFAULT NULL,
+  `buy` decimal(16,2) DEFAULT NULL,
+  `sell` decimal(16,2) DEFAULT NULL,
+  `settlement` decimal(16,2) DEFAULT NULL,
+  `open` decimal(16,2) DEFAULT NULL,
+  `high` decimal(16,2) DEFAULT NULL,
+  `low` decimal(16,2) DEFAULT NULL,
+  `volume` varchar(16)  DEFAULT NULL,
+  `amount` varchar(16)  DEFAULT NULL,
+  `ticktime` datetime DEFAULT NULL,
+  `per` decimal(16,2) DEFAULT NULL,
+  `per_d` decimal(16,2) DEFAULT NULL,
+  `nta` decimal(16,2) DEFAULT NULL,
+  `pb` decimal(16,2) DEFAULT NULL,
+  `mktcap` decimal(16,2) DEFAULT NULL,
+  `nmc` decimal(16,2) DEFAULT NULL,
+  `turnoverratio` decimal(16,2) DEFAULT NULL,
+  `favor` varchar(50)  DEFAULT NULL,
+  `guba` varchar(50)  DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `q_code` (`code`),
+  KEY `q_open` (`open`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

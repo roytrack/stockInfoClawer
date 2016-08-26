@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.roytrack</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mainModule</module>
+    </modules>
+
+
+    <properties>
+        <project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
+        <project-reporting-outputEncoding>UTF-8</project-reporting-outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java-version>1.8</java-version>
+        <!-- 主要依赖库的版本定义 -->
+        <version>1.0-SNAPSHOT</version>
+
+        <spring-version>4.2.6.RELEASE</spring-version>
+        <aspectj-version>1.8.9</aspectj-version>
+        <!-- db pool-->
+        <mybatis-version>3.4.0</mybatis-version>
+        <mysql-version>5.1.26</mysql-version>
+        <mybatis-spring-version>1.3.0</mybatis-spring-version>
+        <hibernate-validator-version>5.2.4.Final</hibernate-validator-version>
+
+        <spring-data-redis-version>1.6.0.RELEASE</spring-data-redis-version>
+        <jedis-version>2.8.1</jedis-version>
+
+        <jackson-version>2.8.0</jackson-version>
+        <hikaricp-version>2.4.6</hikaricp-version>
+        <guava-version>17.0</guava-version>
+        <commons-lang3-version>3.4</commons-lang3-version>
+        <commons-io-version>2.5</commons-io-version>
+        <!-- poi -->
+        <poi-version>3.12</poi-version>
+        <!-- Logging -->
+        <logback-version>1.0.13</logback-version>
+        <slf4j-version>1.7.5</slf4j-version>
+        <junit-version>4.12</junit-version>
+        <assertj-version>1.6.1</assertj-version>
+        <thrift-version>0.9.3</thrift-version>
+        <zookeeper-version>3.3.3</zookeeper-version>
+        <zkclient-version>0.1</zkclient-version>
+        <java-javasimon>4.0.0</java-javasimon>
+
+        <dom4j-version>1.6.1</dom4j-version>
+        <javassist-version>3.18.2-GA</javassist-version>
+
+    </properties>
+
+
+    <dependencyManagement>
+            <dependencies>
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-version}</version>
+                <exclusions>
+                    <!-- Exclude Commons Logging in favor of SLF4j -->
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+                <!--切面需要-->
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                    <version>${aspectj-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${aspectj-version}</version>
+                </dependency>
+            <!-- db -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring-version}</version>
+            </dependency>
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring-data-redis-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis-version}</version>
+            </dependency>
+            <!-- db pool-->
+                <dependency>
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>HikariCP</artifactId>
+                    <version>${hikaricp-version}</version>
+                </dependency>
+            <!-- jackson 解析 Json-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson-version}</version>
+            </dependency>
+
+                <dependency>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                    <version>1.2.8</version>
+                </dependency>
+
+            <!-- j2ee web spec -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.0</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- JSR303 Bean Validator 对象的检查验证-->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator-version}</version>
+            </dependency>
+            <!-- timer -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.2.1</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>c3p0</artifactId>
+                        <groupId>c3p0</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz-jobs</artifactId>
+                <version>2.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <!-- GENERAL UTILS begin -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io-version}</version>
+            </dependency>
+            <!-- 通用的编码解码算法 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.10</version>
+            </dependency>
+            <!-- Bean类型编译，copy等 -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.2</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- commons 公共工具类包 -->
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.1</version>
+            </dependency>
+            <!-- 导入导出 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml-schemas</artifactId>
+                <version>${poi-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist-version}</version>
+            </dependency>
+            <!-- google java library -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.uuid</groupId>
+                <artifactId>java-uuid-generator</artifactId>
+                <version>3.1.3</version>
+            </dependency>
+            <!-- Logging -->
+            <!-- slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+              <!--
+                 http://my.oschina.net/pingpangkuangmo/blog/410224
+                 log4j-over-slf4j：log4j1到slf4j的桥梁
+                 jcl-over-slf4j：commons-logging到slf4j的桥梁
+                 jul-to-slf4j：jdk-logging到slf4j的桥梁
+             -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+
+            <!-- logback -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback-version}</version>
+            </dependency>
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>${logback-version}</version>
+                </dependency>
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- 定义隐式依赖的版本 -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.10</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--zookeeper-->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient-version}</version>
+            </dependency>
+            <!-- kryo java序列化-->
+            <dependency>
+                <groupId>com.esotericsoftware.kryo</groupId>
+                <artifactId>kryo</artifactId>
+                <version>2.24.0</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.27</version>
+            </dependency>
+            <!-- thrift 跨语言序列化 -->
+            <dependency>
+                <groupId>org.apache.thrift</groupId>
+                <artifactId>libthrift</artifactId>
+                <version>${thrift-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>4.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4</version>
+            </dependency>
+
+            <!-- netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>3.10.5.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>5.0.0.Alpha2</version>
+            </dependency>
+            <!--javasimon 性能-->
+            <dependency>
+                <groupId>org.codehaus.janino</groupId>
+                <artifactId>janino</artifactId>
+                <version>2.7.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javasimon</groupId>
+                <artifactId>javasimon-spring</artifactId>
+                <version>${java-javasimon}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javasimon</groupId>
+                <artifactId>javasimon-console-embed</artifactId>
+                <version>${java-javasimon}</version>
+            </dependency>
+
+                <!--高性能交易框架-->
+                <dependency>
+                    <groupId>com.lmax</groupId>
+                    <artifactId>disruptor</artifactId>
+                    <version>3.3.5</version>
+                </dependency>
+        </dependencies>
+        </dependencyManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <!-- compiler插件, 设定JDK版本 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.2</version>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                        <encoding>${project-build-sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!-- resource插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
+                    </configuration>
+                </plugin>
+
+                <!-- jar打包相关插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+
+                <!-- clean插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+
+                <!-- install插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <!-- tomcat插件
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>-->
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>2.1.11</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <!-- that's the default value, you don't have to set it -->
+                        <prefix>git</prefix>
+
+                        <!-- that's the default value -->
+                        <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>
+
+                        <!-- false is default here, it prints some more information during the build -->
+                        <verbose>false</verbose>
+
+                        <!-- @since 2.1.10 -->
+                        <!--
+                          false is default here, if set to true it uses native `git` excutable for extracting all data.
+                          This usualy has better performance than the default (jgit) implemenation, but requires you to
+                          have git available as executable for the build as well as *might break unexpectedly* when you
+                          upgrade your system-wide git installation.
+
+                          As rule of thumb - stay on `jgit` (keep this `false`) until you notice performance problems.
+                        -->
+                        <useNativeGit>false</useNativeGit>
+
+                        <!--
+                            If you'd like to tell the plugin where your .git directory is,
+                            use this setting, otherwise we'll perform a search trying to
+                            figure out the right directory. It's better to add it explicite IMHO.
+                        -->
+                        <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+
+                        <!-- ALTERNATE SETUP - GENERATE FILE -->
+                        <!--
+                            If you want to keep git information, even in your WAR file etc,
+                            use this mode, which will generate a properties file (with filled out values)
+                            which you can then normally read using new Properties().load(/**/)
+                        -->
+
+                        <!--
+                            this is true by default; You may want to set this to false, if the plugin should run inside a
+                            <packaging>pom</packaging> project. Most projects won't need to override this property.
+
+                            For an use-case for this kind of behaviour see: https://github.com/ktoso/maven-git-commit-id-plugin/issues/21
+                        -->
+                        <skipPoms>true</skipPoms>
+
+                        <!-- this is false by default, forces the plugin to generate the git.properties file -->
+                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
+
+                        <!-- The path for the to be generated properties file, it's relative to ${project.basedir} -->
+                        <generateGitPropertiesFilename>src/main/resources/git.properties</generateGitPropertiesFilename>
+
+                        <!-- true by default, controls whether the plugin will fail when no .git directory is found, when set to false the plugin will just skip execution -->
+                        <!-- @since 2.0.4 -->
+                        <failOnNoGitDirectory>false</failOnNoGitDirectory>
+
+                        <!-- @since v2.0.4 -->
+                        <!--
+                             Controls the length of the abbreviated git commit it (git.commit.id.abbrev)
+
+                             Defaults to `7`.
+                             `0` carries the special meaning.
+                             Maximum value is `40`, because of max SHA-1 length.
+                         -->
+                        <abbrevLength>7</abbrevLength>
+
+                        <!-- @since 2.1.8 -->
+                        <!--
+                            skip the plugin execution completely. This is useful for e.g. profile activated plugin invocations or
+                            to use properties to enable / disable pom features. Default value is 'false'.
+                        -->
+                        <skip>false</skip>
+
+                        <!-- @since 2.1.9 -->
+                        <!--
+                            Can be used to exclude certain properties from being emited into the resulting file.
+                            May be useful when you want to hide {@code git.remote.origin.url} (maybe because it contains your repo password?),
+                            or the email of the committer etc.
+
+                            Each value may be globbing, that is, you can write {@code git.commit.user.*} to exclude both, the {@code name},
+                            as well as {@code email} properties from being emitted into the resulting files.
+
+                            Please note that the strings here are Java regexes ({@code .*} is globbing, not plain {@code *}).
+                        -->
+                        <excludeProperties>
+                            <!-- <excludeProperty>git.user.*</excludeProperty> -->
+                        </excludeProperties>
+
+
+                        <!-- @since 2.1.0 -->
+                        <!--
+                            read up about git-describe on the in man, or it's homepage - it's a really powerful versioning helper
+                            and the recommended way to use git-commit-id-plugin. The configuration bellow is optional,
+                            by default describe will run "just like git-describe on the command line", even though it's a JGit reimplementation.
+                        -->
+                        <gitDescribe>
+
+                            <!-- don't generate the describe property -->
+                            <skip>false</skip>
+                            <tags>true</tags>
+                            <!--
+                                if no tag was found "near" this commit, just print the commit's id instead,
+                                helpful when you always expect this field to be not-empty
+                            -->
+                            <always>false</always>
+                            <!--
+                                 how many chars should be displayed as the commit object id?
+                                 7 is git's default,
+                                 0 has a special meaning (see end of this README.md),
+                                 and 40 is the maximum value here
+                            -->
+                            <abbrev>7</abbrev>
+                            <!-- when the build is triggered while the repo is in "dirty state", append this suffix -->
+                            <dirty>-dirty</dirty>
+                            <!--
+                                 always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" a tag.
+                                 The distance will always be 0 if you're "on" the tag.
+                            -->
+                            <forceLongFormat>false</forceLongFormat>
+                        </gitDescribe>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-banned-dependencies</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>3.0.3</version>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>1.8</version>
+                                    </requireJavaVersion>
+                                </rules>
+                                <fail>true</fail>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- assembly插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.13</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <log.root.level>INFO</log.root.level>
+                <datasource.url.clawer><![CDATA[jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=round&useUnicode=true&characterEncoding=UTF-8]]></datasource.url.clawer>
+                <datasource.username.clawer>roytrack</datasource.username.clawer>
+                <datasource.password.clawer>roytrack</datasource.password.clawer>
+            </properties>
+        </profile>
+    </profiles>
+
+
+</project>
