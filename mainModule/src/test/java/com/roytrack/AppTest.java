@@ -8,6 +8,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -27,10 +30,25 @@ public class AppTest {
 
 
     @Test
-    public void JsonToObject() throws IOException {
+    public void JsonToObject() throws IOException, ParseException {
         clawerService.insertData("sddd");
     }
 
+    @Test
+    public void parseDate() throws ParseException {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.format(new Date()));
+        String a="2016-08-25 16:30:03";
+        Date d=sdf.parse(a);
+        System.out.println(d.getTime());
+
+    }
+
+
+    @Test
+    public void all() throws IOException, ParseException {
+        clawerService.all();
+    }
 
 
 }

@@ -42,9 +42,9 @@ public class Quotation {
 
     private BigDecimal low;
 
-    private String volume;
+    private BigDecimal volume;
 
-    private String amount;
+    private BigDecimal amount;
 
     private Date ticktime;
 
@@ -65,6 +65,7 @@ public class Quotation {
     private String favor;
 
     private String guba;
+
 
 
 }

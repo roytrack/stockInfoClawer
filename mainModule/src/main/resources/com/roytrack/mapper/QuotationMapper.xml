@@ -16,8 +16,8 @@
     <result column="open" property="open" jdbcType="DECIMAL" />
     <result column="high" property="high" jdbcType="DECIMAL" />
     <result column="low" property="low" jdbcType="DECIMAL" />
-    <result column="volume" property="volume" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="volume" property="volume" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
     <result column="ticktime" property="ticktime" jdbcType="TIMESTAMP" />
     <result column="per" property="per" jdbcType="DECIMAL" />
     <result column="per_d" property="perD" jdbcType="DECIMAL" />
@@ -49,21 +49,21 @@
   </delete>
 
   <insert id="insert" parameterType="com.roytrack.model.Quotation" >
-    insert into quotation (id, trans_date, symbol, 
-      code, name, trade, 
-      pricechange, changepercent, buy, 
-      sell, settlement, open, 
-      high, low, volume, 
-      amount, ticktime, per, 
-      per_d, nta, pb, mktcap, 
-      nmc, turnoverratio, favor, 
+      insert into quotation (id, trans_date, symbol,
+      code, name, trade,
+      pricechange, changepercent, buy,
+      sell, settlement, open,
+      high, low, volume,
+      amount, ticktime, per,
+      per_d, nta, pb, mktcap,
+      nmc, turnoverratio, favor,
       guba)
-    values (#{id,jdbcType=BIGINT}, #{transDate,jdbcType=TIMESTAMP}, #{symbol,jdbcType=VARCHAR}, 
-      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{trade,jdbcType=DECIMAL}, 
-      #{pricechange,jdbcType=DECIMAL}, #{changepercent,jdbcType=DECIMAL}, #{buy,jdbcType=DECIMAL}, 
-      #{sell,jdbcType=DECIMAL}, #{settlement,jdbcType=DECIMAL}, #{open,jdbcType=DECIMAL}, 
-      #{high,jdbcType=DECIMAL}, #{low,jdbcType=DECIMAL}, #{volume,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=VARCHAR}, #{ticktime,jdbcType=TIMESTAMP}, #{per,jdbcType=DECIMAL}, 
+    values (#{id,jdbcType=BIGINT}, #{transDate,jdbcType=TIMESTAMP}, #{symbol,jdbcType=VARCHAR},
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{trade,jdbcType=DECIMAL},
+      #{pricechange,jdbcType=DECIMAL}, #{changepercent,jdbcType=DECIMAL}, #{buy,jdbcType=DECIMAL},
+      #{sell,jdbcType=DECIMAL}, #{settlement,jdbcType=DECIMAL}, #{open,jdbcType=DECIMAL},
+      #{high,jdbcType=DECIMAL}, #{low,jdbcType=DECIMAL}, #{volume,jdbcType=DECIMAL},
+      #{amount,jdbcType=DECIMAL}, #{ticktime,jdbcType=TIMESTAMP}, #{per,jdbcType=DECIMAL},
       #{perD,jdbcType=DECIMAL}, #{nta,jdbcType=DECIMAL}, #{pb,jdbcType=DECIMAL}, #{mktcap,jdbcType=DECIMAL}, 
       #{nmc,jdbcType=DECIMAL}, #{turnoverratio,jdbcType=DECIMAL}, #{favor,jdbcType=VARCHAR}, 
       #{guba,jdbcType=VARCHAR})
@@ -194,10 +194,10 @@
         #{low,jdbcType=DECIMAL},
       </if>
       <if test="volume != null" >
-        #{volume,jdbcType=VARCHAR},
+        #{volume,jdbcType=DECIMAL},
       </if>
       <if test="amount != null" >
-        #{amount,jdbcType=VARCHAR},
+        #{amount,jdbcType=DECIMAL},
       </if>
       <if test="ticktime != null" >
         #{ticktime,jdbcType=TIMESTAMP},
@@ -277,10 +277,10 @@
         low = #{low,jdbcType=DECIMAL},
       </if>
       <if test="volume != null" >
-        volume = #{volume,jdbcType=VARCHAR},
+        volume = #{volume,jdbcType=DECIMAL},
       </if>
       <if test="amount != null" >
-        amount = #{amount,jdbcType=VARCHAR},
+        amount = #{amount,jdbcType=DECIMAL},
       </if>
       <if test="ticktime != null" >
         ticktime = #{ticktime,jdbcType=TIMESTAMP},
@@ -316,7 +316,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.roytrack.model.Quotation" >
-    update quotation
+   update quotation
     set trans_date = #{transDate,jdbcType=TIMESTAMP},
       symbol = #{symbol,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
@@ -330,8 +330,8 @@
       open = #{open,jdbcType=DECIMAL},
       high = #{high,jdbcType=DECIMAL},
       low = #{low,jdbcType=DECIMAL},
-      volume = #{volume,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=VARCHAR},
+      volume = #{volume,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
       ticktime = #{ticktime,jdbcType=TIMESTAMP},
       per = #{per,jdbcType=DECIMAL},
       per_d = #{perD,jdbcType=DECIMAL},
