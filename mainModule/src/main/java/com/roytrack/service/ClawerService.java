@@ -62,6 +62,7 @@ public class ClawerService {
         System.out.println();
         JSONObject ob=(JSONObject)va.get(0);
         date=ob.getString("day")+date;
+        System.out.println("data date is "+date );
         JSONArray items=(JSONArray)ob.get("items");
         System.out.println(items.size());
         if(items.size()<=0){
